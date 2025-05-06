@@ -7,7 +7,7 @@ This example demonstrates how to perform inference using YOLOv8 models in C++ wi
 ```bash
 # 代码参考官方代码: ultralytics/examples/YOLOv8-CPP-Inference
 
-# Add a **yolov8\_.onnx** and/or **yolov5\_.onnx** model(s) to the ultralytics folder.
+# Add a **yolov8\_.onnx** model(s) to the ultralytics folder.
 # Edit the **main.cpp** to change the **projectBasePath** to match your user.
 
 # Note that by default the CMake file will try and import the CUDA library to be used with the OpenCVs dnn (cuDNN) GPU Inference.
@@ -29,15 +29,20 @@ To export YOLOv8 models:
 yolo export model=yolov8n.pt imgsz=640,640 format=onnx opset=12
 ```
 
+det_header_yolov8n_640x640_250430_sim.onnx:
 
-yolov8s.onnx:
-
-![image](https://user-images.githubusercontent.com/40023722/217356132-a4cecf2e-2729-4acb-b80a-6559022d7707.png)
+![image](https://github.com/jingwang7236/YOLOv8-CPP-Inference/blob/master/bus_result.jpg)
 
 
-This repository utilizes OpenCV's DNN API to run ONNX exported models of YOLOv8. Note that the example networks are exported with rectangular (640x480) resolutions, but any exported resolution will work. You may want to use the letterbox approach for square images, depending on your use case.
+This repository utilizes OpenCV's DNN API to run ONNX exported models of YOLOv8. Note that the example networks are exported with rectangular (640x640) resolutions, but any exported resolution will work. You may want to use the letterbox approach for square images, depending on your use case.
 
-The **main** branch version uses Qt as a GUI wrapper. The primary focus here is the **Inference** class file, which demonstrates how to transpose YOLOv8 models to work as YOLOv5 models.
+
+
+## 动态库使用
+
+参考 main.cpp
+
+算法库：shared_library/libheader_detector.so
 
 
 ## 转模型问题
@@ -59,9 +64,3 @@ net.setPreferableBackend(cv::dnn::DNN_BACKEND_OPENCV);
 net.setPreferableTarget(cv::dnn::DNN_TARGET_CPU);
 
 ```
-
-## 动态库使用
-
-参考 main.cpp
-
-算法库：shared_library/libheader_detector.so
