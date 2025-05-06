@@ -5,10 +5,7 @@ This example demonstrates how to perform inference using YOLOv8 models in C++ wi
 ## Usage
 
 ```bash
-git clone ultralytics
-cd ultralytics
-pip install .
-cd examples/YOLOv8-CPP-Inference
+# 代码参考官方代码: ultralytics/examples/YOLOv8-CPP-Inference
 
 # Add a **yolov8\_.onnx** and/or **yolov5\_.onnx** model(s) to the ultralytics folder.
 # Edit the **main.cpp** to change the **projectBasePath** to match your user.
@@ -28,7 +25,8 @@ make
 To export YOLOv8 models:
 
 ```commandline
-yolo export model=yolov8s.pt imgsz=480,640 format=onnx opset=12
+# conda env: ultralytics
+yolo export model=yolov8n.pt imgsz=640,640 format=onnx opset=12
 ```
 
 
@@ -62,4 +60,8 @@ net.setPreferableTarget(cv::dnn::DNN_TARGET_CPU);
 
 ```
 
-## 动态库开发
+## 动态库使用
+
+参考 main.cpp
+
+算法库：shared_library/libheader_detector.so
